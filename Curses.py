@@ -1,4 +1,5 @@
 import curses
+import RPi.GPIO as GPIO
 
 screen = curses.initscr()
 
