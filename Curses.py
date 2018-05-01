@@ -9,6 +9,10 @@ curses.cbreak()
 screen.keypad(True)
 
 #SET UP GPIO HERE
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+GPIO.cleanup()
+
 
 while True:
     screen_input = screen.getch()
