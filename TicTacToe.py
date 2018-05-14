@@ -2,9 +2,7 @@
 """
 Variables
 """
-board = [[0, 0, 0],
-         [0, 0, 0],
-         [0, 0, 0]]
+board = [0, 0, 0, 0, 0, 0, 0, 0 ,0]
 
 player1_turn = True
 
@@ -14,53 +12,47 @@ Functions
 """
 def is_win(board_state, player):
     for x in range(3):
-        if board_state[x][0] == player and board_state[x][1] == player and board_state[x][2] == player:
+        if board_state[x*3+0] == player and board_state[x*3+1] == player and board_state[x*3+2] == player:
             return True
-        elif board_state[0][x] == player and board_state[1][x] == player and board_state[2][x] == player:
+        elif board_state[x] == player and board_state[x+3] == player and board_state[x+6] == player:
             return True
 
-    if board_state[0][0] == player and board_state[1][1]  == player and board_state[2][2] == player:
+    if board_state[0] == player and board_state[4]  == player and board_state[8] == player:
         return True
-    elif board_state[0][2] == player and board_state[1][1]  == player and board_state[2][0] == player:
+    elif board_state[6] == player and board_state[4]  == player and board_state[2] == player:
         return True
     else:
         return False
 
 
-def get_letter(board, y, x):
+def get_letter(board, pos):
     codes = ['O', ' ', 'X']
-    if board[y][x] != 0:
-        return codes[board[y][x]+1]
+    if board[pos] != 0:
+        return codes[board[pos]+1]
     else:
-        return y*3+x+1
+        return pos
 
 
 def print_board(board):
-    print(' ', get_letter(board, 0, 0), ' | ', get_letter(board, 0, 1), ' | ', get_letter(board, 0, 2))
+    print(' ', get_letter(board, 0), ' | ', get_letter(board, 1), ' | ', get_letter(board, 2))
     print('-----------------')
-    print(' ', get_letter(board, 1, 0), ' | ', get_letter(board, 1, 1), ' | ', get_letter(board, 1, 2))
+    print(' ', get_letter(board, 3), ' | ', get_letter(board, 4), ' | ', get_letter(board, 5))
     print('-----------------')
-    print(' ', get_letter(board, 2, 0), ' | ', get_letter(board, 2, 1), ' | ', get_letter(board, 2, 2))
+    print(' ', get_letter(board, 6), ' | ', get_letter(board, 7), ' | ', get_letter(board, 8))
 
 
 def can_move(board, move):
     if move >= 9 or move < 0:
         return False
 
-    movex = move % 3
-    movey = move // 3
-
-    if board[movey][movex] != 0:
+    if board[move] != 0:
         return False
     else:
         return True
 
 
 def make_move(board, move, player_token):
-    movex = move % 3
-    movey = move // 3
-
-    board[movey][movex] = player_token
+    board[move] = player_token
 
 
 """
@@ -80,7 +72,7 @@ while True:
     move = (input("Where would you like to move?"))
 
     try:
-        move = int(move)-1
+        move = int(move)
     except ValueError:
         print('\n\n\n\n\n')
         excuse = input('You cannot move to ' + move + '. Press ENTER to continue')
@@ -90,7 +82,7 @@ while True:
         make_move(board, move, player_token)
     else:
         print('\n\n\n\n\n')
-        excuse = input('You cannot move to ' + str(move+1) + '. Press ENTER to continue')
+        excuse = input('You cannot move to ' + str(move) + '. Press ENTER to continue')
         continue
 
     if is_win(board, player_token):
