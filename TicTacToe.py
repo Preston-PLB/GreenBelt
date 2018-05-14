@@ -77,7 +77,14 @@ while True:
     else:
         player_token = -1
 
-    move = int(input("Where would you like to move?"))-1
+    move = (input("Where would you like to move?"))
+
+    try:
+        move = int(move)-1
+    except ValueError:
+        print('\n\n\n\n\n')
+        excuse = input('You cannot move to ' + move + '. Press ENTER to continue')
+        continue
 
     if can_move(board, move):
         make_move(board, move, player_token)
