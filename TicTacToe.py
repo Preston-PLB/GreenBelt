@@ -48,7 +48,7 @@ def can_move(board, move):
         return False
 
     movex = move % 3
-    movey = move / 3
+    movey = move // 3
 
     if board[movey][movex] != 0:
         return False
@@ -58,7 +58,7 @@ def can_move(board, move):
 
 def make_move(board, move, player_token):
     movex = move % 3
-    movey = move / 3
+    movey = move // 3
 
     board[movey][movex] = player_token
 
@@ -70,14 +70,14 @@ while True:
 
     print('\n\n\n\n\n')
     print_board(board)
-
+    print('\n\n')
     player_token = 0
     if player1_turn:
         player_token = 1
     else:
         player_token = -1
 
-    move = int(input("Where would you like to move?"))
+    move = int(input("Where would you like to move?"))-1
 
     if can_move(board, move):
         make_move(board, move, player_token)
@@ -86,11 +86,20 @@ while True:
         excuse = input('You cannot move to ' + move + '. Press ENTER to continue')
 
     if is_win(board, player_token):
+        print('\n\n\n\n\n')
+        print_board(board)
+        print('\n\n')
+
+        winner = ''
+
+        if player1_turn:
+            winner = 'Player 1'
+        else:
+            winner = 'Player 2'
+
+        print('CONGRATS! ', winner, 'WINS!!!!')
+
         break
     else:
         player1_turn = not player1_turn
-
-
-
-
 
