@@ -2,7 +2,7 @@
 """
 Variables
 """
-board = [0, 0, 0, 0, 0, 0, 0, 0 ,0]
+board = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 player1_turn = True
 
@@ -17,9 +17,9 @@ def is_win(board_state, player):
         elif board_state[x] == player and board_state[x+3] == player and board_state[x+6] == player:
             return True
 
-    if board_state[0] == player and board_state[4]  == player and board_state[8] == player:
+    if board_state[0] == player and board_state[4] == player and board_state[8] == player:
         return True
-    elif board_state[6] == player and board_state[4]  == player and board_state[2] == player:
+    elif board_state[6] == player and board_state[4] == player and board_state[2] == player:
         return True
     else:
         return False
