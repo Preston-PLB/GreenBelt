@@ -83,7 +83,7 @@ while True:
         make_move(board, move, player_token)
     else:
         print('\n\n\n\n\n')
-        excuse = input('You cannot move to ' + move + '. Press ENTER to continue')
+        excuse = input('You cannot move to ' + str(move) + '. Press ENTER to continue')
 
     if is_win(board, player_token):
         print('\n\n\n\n\n')
