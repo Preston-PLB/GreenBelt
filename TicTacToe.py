@@ -38,7 +38,7 @@ def get_letter(board, y, x):
 def print_board(board):
     print(' ', get_letter(board, 0, 0), ' | ', get_letter(board, 0, 1), ' | ', get_letter(board, 0, 2))
     print('-----------------')
-    print(' ', get_letter(board, 1, 0), ' | ', get_letter(board, 1, 1), ' | ', get_letter(board, 2, 2))
+    print(' ', get_letter(board, 1, 0), ' | ', get_letter(board, 1, 1), ' | ', get_letter(board, 1, 2))
     print('-----------------')
     print(' ', get_letter(board, 2, 0), ' | ', get_letter(board, 2, 1), ' | ', get_letter(board, 2, 2))
 
@@ -83,7 +83,8 @@ while True:
         make_move(board, move, player_token)
     else:
         print('\n\n\n\n\n')
-        excuse = input('You cannot move to ' + str(move) + '. Press ENTER to continue')
+        excuse = input('You cannot move to ' + str(move+1) + '. Press ENTER to continue')
+        continue
 
     if is_win(board, player_token):
         print('\n\n\n\n\n')
