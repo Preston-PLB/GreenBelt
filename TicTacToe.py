@@ -14,14 +14,14 @@ Functions
 """
 def is_win(board_state, player):
     for x in range(3):
-        if board_state[x][0] == player & board_state[x][1] == player & board_state[x][2] == player:
+        if board_state[x][0] == player and board_state[x][1] == player and board_state[x][2] == player:
             return True
-        elif board_state[0][x] == player & board_state[1][x] == player & board_state[2][x] == player:
+        elif board_state[0][x] == player and board_state[1][x] == player and board_state[2][x] == player:
             return True
 
-    if board_state[0][0] == player & board_state[1][1]  == player & board_state[2][2] == player:
+    if board_state[0][0] == player and board_state[1][1]  == player and board_state[2][2] == player:
         return True
-    elif board_state[0][2] == player & board_state[1][1]  == player & board_state[2][0] == player:
+    elif board_state[0][2] == player and board_state[1][1]  == player and board_state[2][0] == player:
         return True
     else:
         return False
@@ -44,7 +44,7 @@ def print_board(board):
 
 
 def can_move(board, move):
-    if move > 9 | move < 0:
+    if move >= 9 or move < 0:
         return False
 
     movex = move % 3
