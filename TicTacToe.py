@@ -1,4 +1,3 @@
-
 """
 Variables
 """
@@ -102,4 +101,3 @@ while True:
         break
     else:
         player1_turn = not player1_turn
-
